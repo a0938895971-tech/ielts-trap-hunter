@@ -105,8 +105,11 @@ ollama pull qwen2.5:3b</code></pre></div></div></div>
     <section class="section ai-section" id="ai">
       <div class="wrap">
         <div class="section-kicker">05 — AI TRANSPARENCY</div>
-        <div class="section-heading"><h2>AI 使用說明</h2><p>說清楚 AI 做了哪些事情、哪些部分由程式控制、以及如何驗證成果。</p></div>
-        <div class="ai-grid"><div class="ai-info"><span class="tag">MODEL</span><h3>Ollama × local LLM</h3><p>透過 Python 呼叫本機 Ollama 模型。標準答案來自固定題庫；AI 只負責根據使用者思考過程補充學習回饋。</p></div><div class="ai-info"><span class="tag">W6 CAPABILITY</span><h3>Structured Output</h3><p>使用 Pydantic JSON Schema 限定回饋格式：思考診斷、英文詞句、下次策略。每筆資料再用程式驗證格式。</p></div><div class="ai-info"><span class="tag">VERIFICATION</span><h3>Human-reviewed answers</h3><p>題庫中附有標準答案、證據原句和人工撰寫解析；Python 單元測試檢查格式與原文引文。AI 解說仍需人工核對。</p></div><div class="ai-info"><span class="tag">TOOL DISCLOSURE</span><h3>AI-assisted development</h3><p>初版程式、文件及網頁使用 ChatGPT 協助。交作業時請補上自己實際修改、測試、驗證模型輸出的具體內容。</p></div></div>
+  <div class="section-heading">
+  <h2>AI 使用說明</h2>
+  <p>說清楚 AI 做了哪些事情、哪些部分由程式控制，以及如何驗證成果。</p>
+</div>
+        <div class="ai-grid"><div class="ai-info"><span class="tag">MODEL</span><h3>Ollama × local LLM</h3><p>透過 Python 呼叫本機 Ollama 模型。標準答案來自固定題庫；AI 只負責根據使用者思考過程補充學習回饋。</p></div><div class="ai-info"><span class="tag">W6 CAPABILITY</span><h3>Structured Output</h3><p>使用 Pydantic JSON Schema 限定回饋格式：思考診斷、英文詞句、下次策略。每筆資料再用程式驗證格式。</p></div><div class="ai-info"><span class="tag">VERIFICATION</span><h3>Human-reviewed answers</h3><p>題庫中附有標準答案、證據原句和人工撰寫解析；Python 單元測試檢查格式與原文引文。AI 解說仍需人工核對。</p></div><div class="ai-info"><span class="tag">TOOL DISCLOSURE</span><h3>AI-assisted development</h3><p>本專案使用 ChatGPT 協助初版 Python 程式、README、測試及網頁開發。我使用 Ollama 的 Qwen2.5:3b 模型進行實際測試，發現 AI 曾在學生回答正確時，錯誤判斷學生的理解程度。因此，我修改程式，讓 Python 負責確認答題正確性，並在學生未提供理由時，避免 AI 擅自推測其思考過程。修正後重新測試，確認此情境下 AI 能正確回饋。AI 生成的學習建議仍需人工核對。</p></div></div>
         <p class="bottom-note">IELTS Trap Hunter 為非官方教育示範作品，題目為原創練習內容，並非 IELTS 官方題庫或評分服務。GitHub Pages 為靜態成果展示，不直接執行本機模型。</p>
       </div>
     </section>
