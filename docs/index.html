@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="IELTS Trap Hunter — AI-powered reading trap practice with evidence-first feedback.">
+  <title>IELTS Trap Hunter — Catch the trap. Read the truth.</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top" aria-label="回到 IELTS Trap Hunter 首頁"><span class="brand-symbol">T<span>!</span></span> TRAP<span class="brand-light">HUNTER</span></a>
+      <nav aria-label="網站導覽">
+        <a href="#about">關於作品</a>
+        <a href="#how">如何執行</a>
+        <a href="#results">成果展示</a>
+        <a href="#ai">AI 使用說明</a>
+      </nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> IELTS READING · PYTHON × LLM</div>
+          <h1>Read between<br>the <em>lines.</em></h1>
+          <p class="hero-sub">雅思閱讀陷阱獵人。你以為自己看懂了句子，卻可能被一個小小的推論誤導。</p>
+          <p class="hero-sub-secondary">練習 <strong>True / False / Not Given</strong>，不只知道答案，也學會為什麼。</p>
+          <div class="hero-actions"><a href="#play" class="btn btn-dark">開始互動試玩 <span>↗</span></a><a href="#about" class="btn btn-outline">了解專案</a></div>
+          <p class="hero-note">互動試玩使用原創固定題庫；個人化 AI 回饋由本機 Python + Ollama 產生。</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="paper paper-back"><span class="paper-small">EVIDENCE</span><span class="paper-lines"></span><span class="paper-lines short"></span></div>
+          <div class="paper paper-front">
+            <span class="paper-tag">QUESTION 03</span>
+            <p>The museum <span class="highlight">closed</span> its east wing during renovation.</p>
+            <div class="paper-answers"><span>TRUE</span><span>FALSE</span><span class="chosen">NOT GIVEN ✓</span></div>
+          </div>
+          <div class="floating-stamp">LOOK<br>CLOSER <span>↗</span></div>
+        </div>
+      </div>
+      <div class="wrap statline"><span>01 / Evidence over guesses</span><span>02 / Structured LLM feedback</span><span>03 / Personal progress</span></div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="section-kicker">01 — ABOUT THE PROJECT</div>
+        <div class="section-heading"><h2>做了什麼？</h2><p>把容易混淆的雅思閱讀判斷題，變成「找證據、認陷阱、看回饋」的小練習。</p></div>
+        <div class="feature-grid">
+          <article class="feature"><div class="feature-icon">01</div><h3>Evidence first</h3><p>每題有經過人工編寫的正確答案與原文證據，不讓模型臨時猜答案。</p></article>
+          <article class="feature"><div class="feature-icon">02</div><h3>Trap detection</h3><p>辨識同義改寫、反向敘述、缺少資訊、過度推論等常見陷阱。</p></article>
+          <article class="feature"><div class="feature-icon">03</div><h3>AI coaching</h3><p>讓你輸入選答原因，本機 Ollama 用固定 JSON Schema 給出個人化建議。</p></article>
+          <article class="feature"><div class="feature-icon">04</div><h3>Progress tracking</h3><p>Python 統計答題正確率和常錯陷阱，將學習紀錄留在本機。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section practice-section" id="play">
+      <div class="wrap practice-layout">
+        <div class="practice-intro"><div class="section-kicker">02 — INTERACTIVE DEMO</div><h2>Can you spot<br>the <em>trap?</em></h2><p>先試試三題固定題庫。你會發現，「文章沒有提到」跟「文章說相反」是兩回事。</p><div class="demo-disclaimer">這是可在網頁上直接操作的前端示範，<strong>不會呼叫 LLM</strong>；本機 Python 才會產生 AI 個人化回饋。</div></div>
+        <div class="quiz-panel">
+          <div class="quiz-top"><span class="quiz-label">READING PRACTICE</span><span id="progress">QUESTION 01 / 03</span></div>
+          <div class="quiz-divider"></div>
+          <div class="quiz-kicker">PASSAGE</div>
+          <p class="passage" id="passage">The Riverside Science Museum opened in 1998...</p>
+          <div class="quiz-kicker">STATEMENT</div>
+          <h3 class="question" id="statement">Question loading…</h3>
+          <div id="choices" class="choices" role="group" aria-label="選擇 True False 或 Not Given">
+            <button type="button" data-answer="TRUE">TRUE <span>↗</span></button>
+            <button type="button" data-answer="FALSE">FALSE <span>↗</span></button>
+            <button type="button" data-answer="NOT GIVEN">NOT GIVEN <span>↗</span></button>
+          </div>
+          <div id="feedback" class="quiz-feedback" aria-live="polite" hidden></div>
+          <div class="quiz-footer"><span id="score">0 / 0 CORRECT</span><button type="button" id="next" class="next-btn" hidden>下一題 →</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="section-kicker">03 — RUN IT YOURSELF</div>
+        <div class="section-heading"><h2>怎麼執行？</h2><p>用 VS Code 開啟程式，準備 uv 和 Ollama，就能在自己的電腦上練習。</p></div>
+        <div class="steps">
+          <div class="step"><div class="step-no">01</div><div><h3>安裝 uv 與 Ollama</h3><p>uv 管理 Python 專案相依套件；Ollama 在本機運行語言模型。</p></div></div>
+          <div class="step"><div class="step-no">02</div><div><h3>開啟專案，下載模型</h3><div class="terminal"><span class="terminal-label">TERMINAL</span><pre><code>uv sync
+ollama pull qwen2.5:3b</code></pre></div></div></div>
+          <div class="step"><div class="step-no">03</div><div><h3>啟動 AI 閱讀練習</h3><div class="terminal"><span class="terminal-label">TERMINAL</span><pre><code>uv run main.py</code></pre></div><p>要先看不需要 AI 的固定題庫：<code>uv run main.py --demo</code></p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section result-section" id="results">
+      <div class="wrap">
+        <div class="section-kicker">04 — RESULTS</div>
+        <div class="section-heading"><h2>執行結果</h2><p>Python 會顯示標準答案、原文證據及常錯陷阱；模型正常啟動後另有結構化的 AI 解析。</p></div>
+        <div class="result-grid">
+          <div class="output-panel"><div class="output-top"><span class="live-dot"></span> FIXED QUESTION DEMO <span class="output-corner">OFFLINE</span></div><p class="mono-line muted">YOUR ANSWER</p><p class="mono-answer">FALSE <span>✕</span></p><p class="mono-line muted">CORRECT ANSWER</p><p class="mono-answer success">NOT GIVEN <span>✓</span></p><div class="output-rule"></div><p class="output-explanation">文章只說東翼在 2020 年整修完成，沒有提到整修期間是否閉館，因此不能判為 False。</p></div>
+          <div class="result-details"><div class="result-bubble">WHY IT MATTERS</div><h3>Not Given ≠ False</h3><p><strong>FALSE</strong>：與文章中的資訊明確矛盾。</p><p><strong>NOT GIVEN</strong>：文章沒有提供足夠資訊判斷真假。</p><p class="result-caption">左側為固定題庫示範，非模型實際輸出。正式繳交前請在本機跑過 Ollama 並加入真實執行紀錄或截圖。</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ai-section" id="ai">
+      <div class="wrap">
+        <div class="section-kicker">05 — AI TRANSPARENCY</div>
+        <div class="section-heading"><h2>AI 使用說明</h2><p>說清楚 AI 做了哪些事情、哪些部分由程式控制、以及如何驗證成果。</p></div>
+        <div class="ai-grid"><div class="ai-info"><span class="tag">MODEL</span><h3>Ollama × local LLM</h3><p>透過 Python 呼叫本機 Ollama 模型。標準答案來自固定題庫；AI 只負責根據使用者思考過程補充學習回饋。</p></div><div class="ai-info"><span class="tag">W6 CAPABILITY</span><h3>Structured Output</h3><p>使用 Pydantic JSON Schema 限定回饋格式：思考診斷、英文詞句、下次策略。每筆資料再用程式驗證格式。</p></div><div class="ai-info"><span class="tag">VERIFICATION</span><h3>Human-reviewed answers</h3><p>題庫中附有標準答案、證據原句和人工撰寫解析；Python 單元測試檢查格式與原文引文。AI 解說仍需人工核對。</p></div><div class="ai-info"><span class="tag">TOOL DISCLOSURE</span><h3>AI-assisted development</h3><p>初版程式、文件及網頁使用 ChatGPT 協助。交作業時請補上自己實際修改、測試、驗證模型輸出的具體內容。</p></div></div>
+        <p class="bottom-note">IELTS Trap Hunter 為非官方教育示範作品，題目為原創練習內容，並非 IELTS 官方題庫或評分服務。GitHub Pages 為靜態成果展示，不直接執行本機模型。</p>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap footer-content"><span class="brand brand-footer"><span class="brand-symbol">T<span>!</span></span> TRAP<span class="brand-light">HUNTER</span></span><span>Built with Python · uv · Ollama · GitHub Actions</span><a href="#top">Back to top ↑</a></div></footer>
+</body>
+</html>
